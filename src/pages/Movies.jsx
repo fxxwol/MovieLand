@@ -4,6 +4,8 @@ import { searchByName } from 'service/movieAPI';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
+import { Wrap } from 'styles/Movies.styled';
+import { ListItemButton, ListItemText } from '@mui/material';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -54,15 +56,18 @@ const Movies = () => {
       <SearchBar onSubmit={handleSearch} />
       {status === 'pending' && <Loader />}
       {status === 'resolved' && (
-        <ul>
+        <Wrap>
           {movies.map(({ id, title }) => (
-            <li key={id}>
-              <Link to={`${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
+            <ListItemButton component={Link}
+          to={`${id}`}
+          state={{ from: location }}
+          key={id}
+          divider={true}
+          disableGutters={true}>
+              <ListItemText primary={title} />
+          </ListItemButton>
           ))}
-        </ul>
+        </Wrap>
       )}
       {status=== 'rejected' && <h1>{error.message}</h1>}
     </>

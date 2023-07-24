@@ -6,13 +6,15 @@ import Additional from 'components/Additional';
 import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { Details, Genres } from 'styles/MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-    const [status, setStatus] = useState('');
-    const location = useLocation()
-    const backLink = useRef(location.state?.from ?? '/movies')
+  const [status, setStatus] = useState('');
+  const location = useLocation();
+  const backLink = useRef(location.state?.from ?? '/movies');
 
   useEffect(() => {
     async function getDetails() {
@@ -35,24 +37,39 @@ const MovieDetails = () => {
   if (status === 'resolved') {
     return (
       <>
-        <Link to={backLink.current}>Go back</Link>
-        <div>
+        <Button
+          component={Link}
+          to={backLink.current}
+          color="secondary"
+          size="small"
+          variant="outlined"
+        >
+          Go Back
+        </Button>
+        <Details>
           <img
             src={BASE_IMG_URL + movie.poster_path}
             alt={movie.title}
-            width={450}
+            width={300}
           />
           <div>
             <h1>{movie.title}</h1>
             <p>User score: {Math.ceil(movie.vote_average * 10)}%</p>
             <h2>Overview</h2>
             <p>{movie.overview}</p>
-            <h2>Genres</h2>
-            {movie.genres.map(({ id, name }) => {
-              return <p key={id}>{name}</p>;
-            })}
+
+            {movie.genres.length !== 0 && (
+              <>
+                <h2>Genres</h2>
+                <Genres>
+                  {movie.genres.map(({ id, name }) => {
+                    return <p key={id}>{name}</p>;
+                  })}
+                </Genres>
+              </>
+            )}
           </div>
-        </div>
+        </Details>
         <Additional />
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />

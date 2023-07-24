@@ -2,10 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getTrending } from '../service/movieAPI';
 import { Link, useLocation } from 'react-router-dom';
+import { ListItemButton, ListItemText } from '@mui/material';
+import { H1 } from 'styles/Home.styled';
+import { Wrap } from 'styles/Movies.styled';
 
 const Home = props => {
-    const [movies, setMovies] = useState([]);
-    const location = useLocation()
+  const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function getTrendingMovies() {
@@ -21,17 +24,23 @@ const Home = props => {
 
   return (
     <>
-      <h1>Trending today</h1>
-      <ul>
+      <H1 variant="h1">Trending today</H1>
+      <Wrap>
         {movies.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`} state={{from: location}}>{title}</Link>
-          </li>
+          <ListItemButton
+            component={Link}
+            to={`movies/${id}`}
+            state={{ from: location }}
+            key={id}
+            divider={true}
+            disableGutters={true}
+          >
+            <ListItemText primary={title} />
+          </ListItemButton>
         ))}
-      </ul>
+      </Wrap>
     </>
   );
 };
-
 
 export default Home;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits, BASE_IMG_URL } from 'service/movieAPI';
-
+import { CastWrap, CastItem, CastText, CastDetails } from 'styles/Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
@@ -24,19 +24,29 @@ const Cast = () => {
   return (
     <>
       {error && <p>{error.message}</p>}
-      <ul>
+      <CastWrap>
         {cast.map(person => (
-          <li key={person.id}>
-            <img
-              src={BASE_IMG_URL + person.profile_path}
-              alt={person.name}
-              width={300}
-            />
-            <p>{person.name}</p>
-            <p>Character: {person.character}</p>
-          </li>
+          <CastItem key={person.id}>
+            {person.profile_path ? (
+              <img
+                src={BASE_IMG_URL + person.profile_path}
+                alt={person.name}
+                width={300}
+              />
+            ) : (
+              <img
+                src={require('../img/unknown.png')}
+                alt={person.name}
+                width={300}
+              />
+            )}
+            <CastDetails>
+              <CastText CastText>{person.name}</CastText>
+              <CastText>Character: {person.character}</CastText>
+            </CastDetails>
+          </CastItem>
         ))}
-      </ul>
+      </CastWrap>
     </>
   );
 };

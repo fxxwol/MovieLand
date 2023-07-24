@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormControl, OutlinedInput, Button } from '@mui/material';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -15,23 +16,30 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <header className="Searchbar">
-      <form className="SearchForm" onSubmit={handleSubmit}>
-        <input
-          className="SearchForm-input"
+    <form onSubmit={handleSubmit}>
+      <FormControl
+        sx={{
+          width: '500px',
+          height: '40px',
+          flexDirection: 'row',
+          gap: '10px',
+        }}
+      >
+        <OutlinedInput
+          placeholder="Please enter movie name"
           type="text"
           name="query"
           value={query}
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          color="primary"
           onChange={handleInput}
         />
-        <button type="submit" className="SearchForm-button">
-          <span className="SearchForm-button-label">Search</span>
-        </button>
-      </form>
-    </header>
+        <Button type="submit" variant="outlined" color="primary" size="medium">
+          Search
+        </Button>
+      </FormControl>
+    </form>
   );
 }
 

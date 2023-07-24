@@ -1,17 +1,33 @@
 import { Link } from 'react-router-dom';
+import { Info } from 'styles/Additional.styled';
+import { Navigation } from 'styles/Layout.styled';
 
 const Additional = props => {
   return (
     <>
-      <h3>Additional info</h3>
-      <ul>
+      <h2>Additional info</h2>
+      <Navigation>
         <li>
-          <Link to={`cast`}>Cast</Link>
+          <Info
+            component={Link}
+            to={`cast`}
+            variant="outlined"
+            color="secondary"
+          >
+            Cast
+          </Info>
         </li>
         <li>
-          <Link to={`reviews`}>Reviews</Link>
+          <Info
+            component={Link}
+            to={`reviews`}
+            variant="outlined"
+            color="secondary"
+          >
+            Reviews
+          </Info>
         </li>
-      </ul>
+      </Navigation>
     </>
   );
 };
