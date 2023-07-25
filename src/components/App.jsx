@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, ThemeProvider } from '@mui/material';
 import { theme } from '../styles/Theme';
+import Footer from './Footer';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
@@ -15,17 +16,21 @@ const Reviews = lazy(() => import('../components/Reviews'));
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth='lg'>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="movies/" element={<Movies />} />
-            <Route path="movies/:movieId" element={<MovieDetails />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
+      <Container maxWidth="lg">
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="movies/" element={<Movies />} />
+              <Route path="movies/:movieId" element={<MovieDetails />}>
+                <Route path="cast" element={<Cast />} />
+                <Route path="reviews" element={<Reviews />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
+          </Routes>
+          <Footer />
+        </div>
+
         <ToastContainer autoClose={3000} theme="colored" />
       </Container>
     </ThemeProvider>

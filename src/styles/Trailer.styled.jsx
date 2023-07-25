@@ -6,3 +6,9 @@ export const Player = styled.iframe`
   display: block;
   margin: 30px auto;
 `;
+
+export const VideoImg = styled.img`
+    width: 859px;
+    display: block;
+    margin: 30px auto;
+`;

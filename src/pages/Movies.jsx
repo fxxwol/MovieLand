@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import SearchBar from 'components/SearchBar';
 import { searchByName } from 'service/movieAPI';
-import {
-  Link,
-  useLocation,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
 import { Wrap } from 'styles/Movies.styled';
@@ -66,7 +62,7 @@ const Movies = () => {
   }, [query, page]);
 
   const handlePagination = (_, page) => {
-    setSearchParams({query, page});
+    setSearchParams({ query, page });
   };
 
   return (

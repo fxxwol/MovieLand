@@ -40,7 +40,7 @@ const Home = props => {
   }, [page]);
 
   const handlePagination = (_, page) => {
-    setSearchParams({page})
+    setSearchParams({ page });
   };
   return (
     <Section>
