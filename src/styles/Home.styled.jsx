@@ -8,10 +8,17 @@ export const H1 = styled.h1`
 `;
 
 export const MovieItem = styled(ListItemButton)`
-  width: calc((100% - 15px) / 4);
+  width: calc((100% - 24px) / 4);
+
   &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
     flex-grow: unset;
     -webkit-flex-grow: unset;
+    transition: all 250ms ease-in-out 0ms;
+  }
+
+  &:hover,
+  :focus {
+    transform: scale(1.02);
   }
 `;
 

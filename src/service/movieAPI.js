@@ -70,3 +70,16 @@ export async function getReviews(id) {
         console.log(error)
     }
 }
+
+export async function getVideo(id) {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${id}/videos`, {
+            params: {
+                api_key: `${API_KEY}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -4,6 +4,7 @@ import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import Additional from 'components/Additional';
 import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
 import { Button } from '@mui/material';
+import Trailer from 'components/Trailer';
 import { Section } from 'styles/Common.styled';
 import { Details, Genres, MovieTtitle } from 'styles/MovieDetails.styled';
 
@@ -72,6 +73,7 @@ const MovieDetails = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
+        <Trailer/>
       </Section>
     );
   }
