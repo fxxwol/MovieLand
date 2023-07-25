@@ -7,7 +7,8 @@ import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { Details, Genres } from 'styles/MovieDetails.styled';
+import { Details, Genres, MovieTtitle } from 'styles/MovieDetails.styled';
+import { Section } from 'styles/Common.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -31,12 +32,14 @@ const MovieDetails = () => {
     getDetails();
     setStatus('pending');
   }, [movieId]);
+
+
   if (status === 'pending') {
     return <Loader />;
   }
   if (status === 'resolved') {
     return (
-      <>
+      <Section>
         <Button
           component={Link}
           to={backLink.current}
@@ -53,7 +56,7 @@ const MovieDetails = () => {
             width={300}
           />
           <div>
-            <h1>{movie.title}</h1>
+            <MovieTtitle>{movie.title}</MovieTtitle>
             <p>User score: {Math.ceil(movie.vote_average * 10)}%</p>
             <h2>Overview</h2>
             <p>{movie.overview}</p>
@@ -70,11 +73,11 @@ const MovieDetails = () => {
             )}
           </div>
         </Details>
-        <Additional />
+        <Additional/>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-      </>
+      </Section>
     );
   }
   if (status === 'rejected') {

@@ -1,36 +1,70 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Info } from 'styles/Additional.styled';
-import { Navigation } from 'styles/Layout.styled';
+import { Info, BtnList } from 'styles/Additional.styled';
+import { useState } from 'react';
 
-const Additional = props => {
+const Additional = () => {
   const location = useLocation();
+  const [isShowed, setIsShowed] = useState(false);
+
+  function handleClick() {
+    setIsShowed(prev => !prev);
+  }
+
   return (
     <>
       <h2>Additional info</h2>
-      <Navigation>
+      <BtnList>
         <li>
-          <Info
-            component={Link}
-            to={`cast`}
-            variant="outlined"
-            color="secondary"
-            className={location.pathname.includes('cast') ? 'active' : ''}
-          >
-            Cast
-          </Info>
+          {isShowed ? (
+            <Info
+              component={Link}
+              to={``}
+              variant="outlined"
+              color="secondary"
+              className={location.pathname.includes('cast') ? 'active' : ''}
+              onClick={handleClick}
+            >
+              Cast
+            </Info>
+          ) : (
+            <Info
+              component={Link}
+              to={`cast`}
+              variant="outlined"
+              color="secondary"
+              className={location.pathname.includes('cast') ? 'active' : ''}
+              onClick={handleClick}
+            >
+              Cast
+            </Info>
+          )}
         </li>
         <li>
-          <Info
-            component={Link}
-            to={`reviews`}
-            variant="outlined"
-            color="secondary"
-            className={location.pathname.includes('reviews') ? 'active' : ''}
-          >
-            Reviews
-          </Info>
+          {isShowed ? (
+            <Info
+              component={Link}
+              to={``}
+              variant="outlined"
+              color="secondary"
+              className={location.pathname.includes('reviews') ? 'active' : ''}
+              onClick={handleClick}
+            >
+              Reviews
+            </Info>
+          ) : (
+            <Info
+              component={Link}
+              to={`reviews`}
+              variant="outlined"
+              color="secondary"
+              className={location.pathname.includes('reviews') ? 'active' : ''}
+              onClick={handleClick}
+            >
+              Reviews
+            </Info>
+          )}
         </li>
-      </Navigation>
+      </BtnList>
     </>
   );
 };
