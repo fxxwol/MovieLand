@@ -3,11 +3,12 @@ const API_KEY = 'f5c750e62498ce7d84b29e02e1f941bc'
 const BASE_URL = 'https://api.themoviedb.org/3'
 export const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
-export async function getTrending() {
+export async function getTrending(page = 1) {
     try {
         const response = await axios.get(`${BASE_URL}/trending/movie/day`, {
             params: {
-                api_key: `${API_KEY}`
+                api_key: `${API_KEY}`,
+                page
             }
         });
         return response.data;

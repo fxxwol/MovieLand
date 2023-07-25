@@ -12,5 +12,8 @@ export const theme = createTheme({
         secondary: {
             main: '#141516ec'
         },
+        opacity:{
+            main: '#212f218e'
+        }
     },
 });

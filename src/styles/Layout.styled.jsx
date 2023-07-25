@@ -24,7 +24,6 @@ export const Link = styled(NavLink)`
 export const Header = styled.header`
   padding: 10px;
   position: relative;
-  margin-bottom: 20px;
   height: 40px;
   &:after {
     content: '';
