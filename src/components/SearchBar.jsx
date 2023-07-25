@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormControl, OutlinedInput, Button } from '@mui/material';
+import { SearchInput } from 'styles/SearchBar.styled';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -25,7 +26,7 @@ export default function SearchBar({ onSubmit }) {
           gap: '10px',
         }}
       >
-        <OutlinedInput
+        <SearchInput
           placeholder="Please enter movie name"
           type="text"
           name="query"

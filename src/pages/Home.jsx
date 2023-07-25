@@ -34,58 +34,55 @@ const Home = props => {
 
   const handlePagination = (_, page) =>  {setCurrPage(page);
 }
-  if (status === 'pending') {
-    return <Loader/>
-  }
-  if (status === 'resolved') {
     return (
       <Section>
         <H1 variant="h1">Trending today</H1>
-        <Wrap>
-          {movies.map(({ id, title, poster_path }) => (
-            <MovieItem
-              component={Link}
-              to={`movies/${id}`}
-              state={{ from: location }}
-              key={id}
-              sx={{ padding: '0' }}
-            >
-              <ImageListItem>
-                <img
-                  src={`${BASE_IMG_URL + poster_path}`}
-                  alt={title}
-                  loading="lazy"
-                />
-                <ImageListItemBar
-                  title={title}
-                  sx={{
-                    textAlign: 'center',
-                    background: 'rgba(0, 0, 0, 0.7)',
-                  }}
-                />
-              </ImageListItem>
-            </MovieItem>
-          ))}
-        </Wrap>
-        <Stack spacing={2} alignItems="center">
-          <Pagination
-            count={totalPages}
-            shape="rounded"
-            showFirstButton
-            showLastButton
-            page={currPage}
-            size="large"
-            color="opacity"
-            onChange={handlePagination}
-          />
-        </Stack>
+        {status === 'pending' && <Loader />}
+        {status === 'resolved' && (
+          <>
+            <Wrap>
+              {movies.map(({ id, title, poster_path }) => (
+                <MovieItem
+                  component={Link}
+                  to={`movies/${id}`}
+                  state={{ from: location }}
+                  key={id}
+                  sx={{ padding: '0' }}
+                >
+                  <ImageListItem>
+                    <img
+                      src={`${BASE_IMG_URL + poster_path}`}
+                      alt={title}
+                      loading="lazy"
+                    />
+                    <ImageListItemBar
+                      title={title}
+                      sx={{
+                        textAlign: 'center',
+                        background: 'rgba(0, 0, 0, 0.7)',
+                      }}
+                    />
+                  </ImageListItem>
+                </MovieItem>
+              ))}
+            </Wrap>
+            <Stack spacing={2} alignItems="center">
+              <Pagination
+                count={totalPages}
+                shape="rounded"
+                showFirstButton
+                showLastButton
+                page={currPage}
+                size="large"
+                color="opacity"
+                onChange={handlePagination}
+              />
+            </Stack>
+          </>
+        )}
+        {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
       </Section>
     );
-  }
-
-  if (status === 'rejected') { 
-    return <h1>Soryy, we don't have trending movies</h1>
-  }
   
 };
 
