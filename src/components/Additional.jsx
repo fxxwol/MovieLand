@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Info } from 'styles/Additional.styled';
 import { Navigation } from 'styles/Layout.styled';
 
 const Additional = props => {
+  const location = useLocation();
   return (
     <>
       <h2>Additional info</h2>
@@ -13,6 +14,7 @@ const Additional = props => {
             to={`cast`}
             variant="outlined"
             color="secondary"
+            className={location.pathname.includes('cast') ? 'active' : ''}
           >
             Cast
           </Info>
@@ -23,6 +25,7 @@ const Additional = props => {
             to={`reviews`}
             variant="outlined"
             color="secondary"
+            className={location.pathname.includes('reviews') ? 'active' : ''}
           >
             Reviews
           </Info>
