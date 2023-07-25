@@ -1,14 +1,11 @@
 import { Loader } from 'components/Loader';
-import { useEffect, useState, useRef } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef, Suspense } from 'react';
+import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import Additional from 'components/Additional';
 import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { Details, Genres, MovieTtitle } from 'styles/MovieDetails.styled';
 import { Section } from 'styles/Common.styled';
+import { Details, Genres, MovieTtitle } from 'styles/MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -32,8 +29,6 @@ const MovieDetails = () => {
     getDetails();
     setStatus('pending');
   }, [movieId]);
-
-
   if (status === 'pending') {
     return <Loader />;
   }
@@ -73,7 +68,7 @@ const MovieDetails = () => {
             )}
           </div>
         </Details>
-        <Additional/>
+        <Additional />
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>

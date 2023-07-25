@@ -20,10 +20,13 @@ export default function SearchBar({ onSubmit }) {
     <form onSubmit={handleSubmit}>
       <FormControl
         sx={{
-          width: '500px',
+          width: '50%',
+          display: 'flex',
           height: '40px',
           flexDirection: 'row',
           gap: '10px',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
       >
         <SearchInput

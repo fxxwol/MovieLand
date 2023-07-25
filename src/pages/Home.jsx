@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getTrending } from '../service/movieAPI';
 import { Link, useLocation } from 'react-router-dom';
 import { ImageListItem, ImageListItemBar, Pagination, Stack } from '@mui/material';
-import { H1, MovieItem } from 'styles/Home.styled';
+import { H1, ImageItem, MovieItem } from 'styles/Home.styled';
 import { Wrap } from 'styles/Movies.styled';
 import { BASE_IMG_URL } from '../service/movieAPI';
 import { Loader } from 'components/Loader';
@@ -32,8 +32,7 @@ const Home = props => {
     setStatus('pending')
   }, [currPage]);
 
-  const handlePagination = (_, page) =>  {setCurrPage(page);
-}
+  const handlePagination = (_, page) => { setCurrPage(page); }
     return (
       <Section>
         <H1 variant="h1">Trending today</H1>
@@ -49,9 +48,13 @@ const Home = props => {
                   key={id}
                   sx={{ padding: '0' }}
                 >
-                  <ImageListItem>
-                    <img
-                      src={`${BASE_IMG_URL + poster_path}`}
+                  <ImageListItem sx={{ width: '100%' }}>
+                    <ImageItem
+                      src={`${
+                        poster_path
+                          ? BASE_IMG_URL + poster_path
+                          : require('../img/default-poster.jpg')
+                      }`}
                       alt={title}
                       loading="lazy"
                     />

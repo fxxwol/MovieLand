@@ -6,8 +6,8 @@ export const BtnList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin: 20px 0;
   gap: 10px;
+  height: fit-content;
 `;
 
 export const Info = styled(Button)`
@@ -16,8 +16,8 @@ export const Info = styled(Button)`
   font-size: 18px;
   line-height: 1.75px;
   border: 1px solid black;
-  &.css-1yq06zn-MuiButtonBase-root-MuiButton-root:hover
-  {
+
+  &.css-1yq06zn-MuiButtonBase-root-MuiButton-root:hover {
     color: #02c342;
     border: 1px solid #02c342;
   }
@@ -26,4 +26,10 @@ export const Info = styled(Button)`
     color: #02c342;
     border: 1px solid #02c342;
   }
+`;
+export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 20px 0;
 `;

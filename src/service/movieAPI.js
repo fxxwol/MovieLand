@@ -17,12 +17,13 @@ export async function getTrending(page = 1) {
     }
 }
 
-export async function searchByName(query = '') {
+export async function searchByName(query = '', page = 1) {
     try {
         const response = await axios.get(`${BASE_URL}/search/movie`, {
             params: {
                 api_key: `${API_KEY}`,
-                query
+                query,
+                page
             }
         });
         return response.data;

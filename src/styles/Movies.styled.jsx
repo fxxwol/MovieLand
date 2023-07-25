@@ -7,4 +7,5 @@ export const Wrap = styled.div`
     gap: 5px;
     justify-content: center;
     align-content: center;
+    height: fit-content;
 `

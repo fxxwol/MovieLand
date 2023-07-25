@@ -9,5 +9,15 @@ export const H1 = styled.h1`
 
 export const MovieItem = styled(ListItemButton)`
   width: calc((100% - 15px) / 4);
+  &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
+    flex-grow: unset;
+    -webkit-flex-grow: unset;
+  }
 `;
 
+export const ImageItem = styled.img`
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  flex-shrink: 0;
+`;
