@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import SearchBar from 'components/SearchBar';
 import { searchByName } from 'service/movieAPI';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
 import { Wrap } from 'styles/Movies.styled';
@@ -20,9 +24,9 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('');
-  const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const query = searchParams.get('query') ?? '';
+  const page = searchParams.get('page') ?? 1;
   const location = useLocation();
 
   const handleSearch = searchQuery => {
@@ -31,7 +35,7 @@ const Movies = () => {
       setSearchParams({});
       return;
     }
-    setSearchParams({ query: searchQuery });
+    setSearchParams({ query: searchQuery, page: 1 });
   };
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const Movies = () => {
     }
     async function getByName() {
       try {
-        const data = await searchByName(query, currPage);
+        const data = await searchByName(query, page);
         if (!data.total_results) {
           throw new Error(
             'Sorry, there are no movies matching your search query. Please try again'
@@ -59,10 +63,10 @@ const Movies = () => {
     getByName();
     setStatus('pending');
     setError(null);
-  }, [query, currPage]);
+  }, [query, page]);
 
   const handlePagination = (_, page) => {
-    setCurrPage(page);
+    setSearchParams({query, page});
   };
 
   return (
@@ -112,7 +116,7 @@ const Movies = () => {
               shape="rounded"
               showFirstButton
               showLastButton
-              page={currPage}
+              page={+page}
               size="large"
               color="opacity"
               onChange={handlePagination}

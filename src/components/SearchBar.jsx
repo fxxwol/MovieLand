@@ -22,6 +22,7 @@ export default function SearchBar({ onSubmit }) {
         sx={{
           width: '50%',
           display: 'flex',
+          margin: '0 auto',
           height: '40px',
           flexDirection: 'row',
           gap: '10px',
