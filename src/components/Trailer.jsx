@@ -30,7 +30,7 @@ function Trailer() {
   if (status === 'pending') {
     return (
       <VideoImg
-        src={require('../img/player.png')}
+        src={require('../img/Grey-Screen-of-Death.jpg')}
         alt="default player"
       />
     );
