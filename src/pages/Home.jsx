@@ -17,6 +17,7 @@ import { BASE_IMG_URL } from '../service/movieAPI';
 import { Loader } from 'components/Loader';
 import { Section } from 'styles/Common.styled';
 import { useSearchParams } from 'react-router-dom';
+import HomeHero from 'components/HomeHero';
 
 const Home = props => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -47,58 +48,61 @@ const Home = props => {
     setSearchParams({ page });
   };
   return (
-    <Section>
-      <H1 variant="h1">Trending today</H1>
-      {status === 'pending' && <Loader />}
-      {status === 'resolved' && (
-        <>
-          <Wrap>
-            {movies.map(({ id, title, poster_path }) => (
-              <MovieItem
-                component={Link}
-                to={`movies/${id}`}
-                state={{ from: location }}
-                key={id}
-                sx={{ padding: '0' }}
-              >
-                <ImageListItem sx={{ width: '100%' }}>
-                  <ImageItem
-                    src={`${
-                      poster_path
-                        ? BASE_IMG_URL + poster_path
-                        : require('../img/default-poster.jpg')
-                    }`}
-                    alt={title}
-                    loading="lazy"
-                  />
-                  <ImageListItemBar
-                    title={title}
-                    sx={{
-                      textAlign: 'center',
-                      background: 'rgba(0, 0, 0, 0.7)',
-                    }}
-                  />
-                </ImageListItem>
-              </MovieItem>
-            ))}
-          </Wrap>
-          <Stack spacing={2} alignItems="center">
-            <Pagination
-              count={totalPages}
-              shape="rounded"
-              showFirstButton
-              showLastButton
-              page={+page}
-              size={size}
-              color="opacity"
-              onChange={handlePagination}
-            />
-          </Stack>
-        </>
-      )}
-      {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
-    <ScrollToTopFab/>
-    </Section>
+    <>
+      <HomeHero></HomeHero>
+      <Section>
+        <H1 variant="h1">Trending today</H1>
+        {/* {status === 'pending' && <Loader />} */}
+        {status === 'resolved' && (
+          <>
+            <Wrap>
+              {movies.map(({ id, title, poster_path }) => (
+                <MovieItem
+                  component={Link}
+                  to={`movies/${id}`}
+                  state={{ from: location }}
+                  key={id}
+                  sx={{ padding: '0' }}
+                >
+                  <ImageListItem sx={{ width: '100%' }}>
+                    <ImageItem
+                      src={`${
+                        poster_path
+                          ? BASE_IMG_URL + poster_path
+                          : require('../img/default-poster.jpg')
+                      }`}
+                      alt={title}
+                      loading="lazy"
+                    />
+                    <ImageListItemBar
+                      title={title}
+                      sx={{
+                        textAlign: 'center',
+                        background: 'rgba(0, 0, 0, 0.7)',
+                      }}
+                    />
+                  </ImageListItem>
+                </MovieItem>
+              ))}
+            </Wrap>
+            <Stack spacing={2} alignItems="center">
+              <Pagination
+                count={totalPages}
+                shape="rounded"
+                showFirstButton
+                showLastButton
+                page={+page}
+                size={size}
+                color="opacity"
+                onChange={handlePagination}
+              />
+            </Stack>
+          </>
+        )}
+        {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
+        <ScrollToTopFab />
+      </Section>
+    </>
   );
 };
 

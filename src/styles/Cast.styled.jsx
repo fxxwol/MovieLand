@@ -32,11 +32,16 @@ export const CastItem = styled.li`
 
   @media ${mobileL} {
     width: calc((100% - 15px) / 4);
+    height: 200px;
+  }
+  @media ${tablet} {
+    width: calc((100% - 10px) / 3);
+    height: 270px;
   }
 `;
 
 export const Img = styled.img`
-  height: 70%;
+  height: 80%;
 `;
 
 export const CastDetails = styled.div`
@@ -54,7 +59,7 @@ export const CastText = styled.p`
   overflow: hidden;
   white-space: nowrap;
 
-  @media ${tablet}{
+  @media ${tablet} {
     font-size: 15px;
   }
 `;
