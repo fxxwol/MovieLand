@@ -2,9 +2,10 @@ import { useScrollTrigger, Zoom, Box, Fab } from '@mui/material';
 import { useCallback } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+
 function ScrollToTopFab() {
   const trigger = useScrollTrigger({
-    threshold: 100,
+    threshold: 500,
   });
 
   const scrollToTop = useCallback(() => {
@@ -30,8 +31,10 @@ function ScrollToTopFab() {
           sx={{
             borderRadius: '6px',
             background: '#08b508da',
-            width: '55px',
-            height: '45px',
+
+            width: '40px',
+            height: '35px',
+
             '&:hover > .MuiSvgIcon-root': {
               color: '#fffefed2',
             },
@@ -41,6 +44,7 @@ function ScrollToTopFab() {
             fontSize="large"
             sx={{
               color: '#161616d3',
+              trasition: '225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
             }}
           />
         </Fab>

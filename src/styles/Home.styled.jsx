@@ -1,14 +1,28 @@
 import { ListItemButton } from '@mui/material';
 import styled from 'styled-components';
+import { breakpoints } from './Theme';
+
+const { _, mobileL, tablet, desktop } = breakpoints;
 
 export const H1 = styled.h1`
   font-weight: 400;
-  font-size: 60px;
+  font-size: 30px;
   margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media ${tablet} {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  @media ${desktop} {
+    font-size: 50px;
+  }
 `;
 
 export const MovieItem = styled(ListItemButton)`
-  width: calc((100% - 24px) / 4);
+  width: 100%;
 
   &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
     flex-grow: unset;
@@ -20,6 +34,13 @@ export const MovieItem = styled(ListItemButton)`
   :focus {
     transform: scale(1.02);
   }
+
+  @media ${mobileL} {
+    width: calc((100% - 16px) / 3);
+  }
+  @media ${tablet} {
+    width: calc((100% - 24px) / 4);
+  }
 `;
 
 export const ImageItem = styled.img`
@@ -28,3 +49,4 @@ export const ImageItem = styled.img`
   object-fit: cover;
   flex-shrink: 0;
 `;
+

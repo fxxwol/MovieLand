@@ -17,7 +17,7 @@ const Reviews = lazy(() => import('../components/Reviews'));
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <div className="App">
           <Routes>
             <Route path="/" element={<Layout />}>

@@ -2,11 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getTrending } from '../service/movieAPI';
 import { Link, useLocation } from 'react-router-dom';
+import { theme } from 'styles/Theme';
 import {
   ImageListItem,
   ImageListItemBar,
   Pagination,
   Stack,
+  useMediaQuery,
 } from '@mui/material';
 import { H1, ImageItem, MovieItem } from 'styles/Home.styled';
 import { Wrap } from 'styles/Movies.styled';
@@ -22,6 +24,8 @@ const Home = props => {
   const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
   const page = searchParams.get('page') ?? 1;
+  let size = '';
+  size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
 
   useEffect(() => {
     async function getTrendingMovies() {
@@ -85,7 +89,7 @@ const Home = props => {
               showFirstButton
               showLastButton
               page={+page}
-              size="large"
+              size={size}
               color="opacity"
               onChange={handlePagination}
             />
