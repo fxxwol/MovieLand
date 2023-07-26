@@ -14,6 +14,9 @@ export const theme = createTheme({
         },
         opacity: {
             main: '#212f218e'
+        },
+        light: {
+            main: '#f1ecec'
         }
     },
     breakpoints: {

@@ -6,12 +6,7 @@ import { breakpoints } from './Theme';
 const { _, mobileL, tablet, desktop } = breakpoints;
 
 export const HomeWrap = styled.section`
-  background-image: linear-gradient(
-    86.47deg,
-    #111111 33.63%,
-    rgba(17, 17, 17, 0) 76.86%
-  );
-  background-image: url('${img}');
+  background-color: #090909;
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -21,6 +16,7 @@ export const HomeWrap = styled.section`
   text-align: center;
   padding: 35px 0;
   margin: 10px auto;
+  color: #f1ecec;
 
   @media ${mobileL} {
     height: 400px;
@@ -61,7 +57,7 @@ export const HeroText = styled.p`
 
 export const Btn = styled(Button)`
   text-decoration: none;
-  color: black;
+  color: f1ecec;
   font-size: 18px;
   line-height: 1.75px;
   border: 1px solid black;
@@ -69,9 +65,9 @@ export const Btn = styled(Button)`
 
   &.MuiButton-root:hover,
   :focus {
-    background-color: black;
-    color: white;
-    border: 1px solid black;
+    background-color: #f1ecec;
+    color: #090909;
+    border: 1px solid #f1ecec;
   }
 `;
 

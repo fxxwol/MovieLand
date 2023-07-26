@@ -17,7 +17,7 @@ function HomeHero() {
             component={Link}
             to={`movies`}
             variant="outlined"
-            color="secondary"
+            color="light"
           >
             More Movies
           </Btn>
