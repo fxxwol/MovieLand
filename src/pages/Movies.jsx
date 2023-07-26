@@ -7,6 +7,8 @@ import { Loader } from 'components/Loader';
 import { Wrap } from 'styles/Movies.styled';
 import { BASE_IMG_URL } from 'service/movieAPI';
 import { ImageItem, MovieItem } from 'styles/Home.styled';
+import {useMediaQuery} from '@mui/material';
+import { theme } from 'styles/Theme';
 import {
   ImageListItemBar,
   ImageListItem,
@@ -24,6 +26,7 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
   const page = searchParams.get('page') ?? 1;
   const location = useLocation();
+  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
 
   const handleSearch = searchQuery => {
     if (!searchQuery.trim()) {
@@ -113,7 +116,7 @@ const Movies = () => {
               showFirstButton
               showLastButton
               page={+page}
-              size="large"
+              size={size}
               color="opacity"
               onChange={handlePagination}
             />

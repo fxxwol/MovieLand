@@ -24,8 +24,7 @@ const Home = props => {
   const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
   const page = searchParams.get('page') ?? 1;
-  let size = '';
-  size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
+  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
 
   useEffect(() => {
     async function getTrendingMovies() {

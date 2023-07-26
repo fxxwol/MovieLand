@@ -28,12 +28,10 @@ export const FooterItem = styled.footer`
     align-items: baseline;
   }
   @media ${tablet} {
-    font-size: 17px;
     justify-content: space-between;
     gap: 20px;
   }
   @media ${desktop} {
-    font-size: 20px;
     gap: 5px;
   }
 `;

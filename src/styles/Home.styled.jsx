@@ -22,7 +22,8 @@ export const H1 = styled.h1`
 `;
 
 export const MovieItem = styled(ListItemButton)`
-  width: 100%;
+ width: calc((100% - 8px));
+ max-width: 264px;
 
   &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
     flex-grow: unset;
@@ -37,9 +38,11 @@ export const MovieItem = styled(ListItemButton)`
 
   @media ${mobileL} {
     width: calc((100% - 16px) / 3);
+    max-width: 156px;
   }
   @media ${tablet} {
     width: calc((100% - 24px) / 4);
+    max-width: 200px;
   }
 `;
 
