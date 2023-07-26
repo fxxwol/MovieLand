@@ -3,10 +3,10 @@ import { useEffect, useState, useRef, Suspense } from 'react';
 import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import Additional from 'components/Additional';
 import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
-import { Button } from '@mui/material';
 import Trailer from 'components/Trailer';
 import { Section } from 'styles/Common.styled';
-import { Details, Genres, MovieTtitle } from 'styles/MovieDetails.styled';
+import { Details, Genres, MovieImg, MovieTtitle } from 'styles/MovieDetails.styled';
+import { Info } from 'styles/Additional.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -36,7 +36,7 @@ const MovieDetails = () => {
   if (status === 'resolved') {
     return (
       <Section>
-        <Button
+        <Info
           component={Link}
           to={backLink.current}
           color="secondary"
@@ -44,15 +44,16 @@ const MovieDetails = () => {
           variant="outlined"
         >
           Go Back
-        </Button>
+        </Info>
         <Details>
-          <img
-            src={BASE_IMG_URL + movie.poster_path}
-            alt={movie.title}
-            width={300}
-          />
           <div>
             <MovieTtitle>{movie.title}</MovieTtitle>
+            <MovieImg
+              src={BASE_IMG_URL + movie.poster_path}
+              alt={movie.title}
+            />
+          </div>
+          <div>
             <p>User score: {Math.ceil(movie.vote_average * 10)}%</p>
             <h2>Overview</h2>
             <p>{movie.overview}</p>
@@ -73,7 +74,7 @@ const MovieDetails = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-        <Trailer/>
+        <Trailer />
       </Section>
     );
   }

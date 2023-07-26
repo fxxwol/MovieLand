@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getTrending } from '../service/movieAPI';
 import { Link, useLocation } from 'react-router-dom';
 import { theme } from 'styles/Theme';
+import ScrollToTopFab from 'components/ScrollTopBtn';
 import {
   ImageListItem,
   ImageListItemBar,
@@ -96,6 +97,7 @@ const Home = props => {
         </>
       )}
       {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
+    <ScrollToTopFab/>
     </Section>
   );
 };

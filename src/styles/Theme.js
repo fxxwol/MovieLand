@@ -31,5 +31,5 @@ export const breakpoints = {
     mobile: `(min-width: 320px)`,
     mobileL: `(min-width: 480px)`,
     tablet: `(min-width: 720px)`,
-        desktop: `(min-width: 1280px)`,
+        desktop: `(min-width: 1200px)`,
 }

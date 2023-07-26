@@ -5,7 +5,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 function ScrollToTopFab() {
   const trigger = useScrollTrigger({
-    threshold: 500,
+    threshold: 400,
   });
 
   const scrollToTop = useCallback(() => {

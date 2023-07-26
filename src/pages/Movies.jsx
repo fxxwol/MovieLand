@@ -7,7 +7,8 @@ import { Loader } from 'components/Loader';
 import { Wrap } from 'styles/Movies.styled';
 import { BASE_IMG_URL } from 'service/movieAPI';
 import { ImageItem, MovieItem } from 'styles/Home.styled';
-import {useMediaQuery} from '@mui/material';
+import { useMediaQuery } from '@mui/material';
+import ScrollToTopFab from 'components/ScrollTopBtn';
 import { theme } from 'styles/Theme';
 import {
   ImageListItemBar,
@@ -124,6 +125,7 @@ const Movies = () => {
         </>
       )}
       {status === 'rejected' && <h1>{error.message}</h1>}
+      <ScrollToTopFab />
     </Section>
   );
 };

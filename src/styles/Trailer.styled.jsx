@@ -1,14 +1,26 @@
 import styled from 'styled-components';
+import { breakpoints } from './Theme';
+
+const { _, mobileL, tablet } = breakpoints;
 
 export const Player = styled.iframe`
-  width: 860px;
-  height: 478px;
+  width: 100%;
+  height: calc(100vw / 1.8);
+  max-width: 1200px;
+  max-height: 667px;
   display: block;
-  margin: 30px auto;
+
+  @media ${mobileL} {
+  }
+
+  @media ${tablet} {
+    display: block;
+    margin: 30px auto;
+  }
 `;
 
 export const VideoImg = styled.img`
-    width: 859px;
-    display: block;
-    margin: 30px auto;
+  width: 100%;
+  display: block;
+  margin: 30px auto;
 `;

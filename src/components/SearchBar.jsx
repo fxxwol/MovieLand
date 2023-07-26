@@ -6,7 +6,7 @@ import { breakpoints } from 'styles/Theme';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
-  const { _, mobilel, tablet, desktop } = breakpoints;
+  const { _, mobileL, tablet, desktop } = breakpoints;
 
   const handleInput = e => {
     setQuery(e.target.value.toLowerCase());
