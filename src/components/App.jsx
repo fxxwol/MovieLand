@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Container, ThemeProvider } from '@mui/material';
 import { theme } from '../styles/Theme';
 import Footer from './Footer';
+import ScrollToTopFab from './ScrollTopBtn';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
@@ -28,6 +29,7 @@ export const App = () => {
               </Route>
             </Route>
           </Routes>
+          <ScrollToTopFab />
           <Footer />
         </div>
 
