@@ -1,29 +1,42 @@
 import styled from 'styled-components';
+import { breakpoints } from './Theme';
+
+const { _, mobileL, tablet, desktop } = breakpoints;
 
 export const CastWrap = styled.ul`
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: fit-content;
-  max-height: 700px;
+  max-height: 600px;
   overflow-y: scroll;
+  margin-bottom: 20px;
+
+  @media ${tablet} {
+    max-height: 700px;
+    gap: 10px;
+  }
 `;
 export const CastItem = styled.li`
-  padding: 10px 20px;
-  max-width: 340px;
-  height: 500px;
+  padding: 10px;
+  width: calc((100% - 10px) / 3);
+  max-width: 135px;
+  height: 170px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   justify-content: space-between;
   align-items: center;
+
+  @media ${mobileL} {
+    width: calc((100% - 15px) / 4);
+  }
 `;
 
 export const Img = styled.img`
-  width: 90%;
+  height: 70%;
 `;
 
 export const CastDetails = styled.div`
@@ -34,7 +47,14 @@ export const CastDetails = styled.div`
   width: 100%;
 `;
 export const CastText = styled.p`
-  font-size: 15px;
+  font-size: 13px;
+  text-overflow: ellipsis;
   line-height: 1.14;
   font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @media ${tablet}{
+    font-size: 15px;
+  }
 `;

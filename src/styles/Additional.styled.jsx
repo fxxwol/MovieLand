@@ -8,7 +8,6 @@ export const BtnList = styled.ul`
   justify-content: start;
   gap: 10px;
   height: fit-content;
-  margin-bottom: 10px;
 `;
 
 export const Info = styled(Button)`

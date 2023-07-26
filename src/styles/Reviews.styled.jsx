@@ -7,6 +7,7 @@ export const ReviewList = styled.ul`
   height: fit-content;
   max-height: 700px;
   overflow-y: scroll;
+  margin-bottom: 20px;
 `;
 export const ReviewCard = styled.li`
   padding: 10px;
