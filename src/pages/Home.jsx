@@ -7,6 +7,10 @@ import { H1 } from 'styles/Home.styled';
 import { Section } from 'styles/Common.styled';
 import { useSearchParams } from 'react-router-dom';
 import HomeHero from 'components/HomeHero';
+import { MoviesWrap } from 'styles/Movies.styled';
+import { Stack, Pagination } from '@mui/material';
+import {useMediaQuery} from '@mui/material';
+import { theme } from 'styles/Theme';
 
 const Home = props => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -14,7 +18,8 @@ const Home = props => {
   const [status, setStatus] = useState('');
   const [totalPages, setTotalPages] = useState(1);
   const page = searchParams.get('page') ?? 1;
-
+  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
+  
   useEffect(() => {
     async function getTrendingMovies() {
       try {
@@ -42,14 +47,29 @@ const Home = props => {
       <HomeHero></HomeHero>
       <Section>
         <H1 variant="h1">Trending today</H1>
-        {/* {status === 'pending' && <Loader />} */}
-        {status === 'resolved' && (
-          <MoviesList movies={movies} page={page} totalPages={totalPages} onChange={handlePagination} path={ genereatePath} />
-        )}
+        <MoviesWrap>
+          {status === 'resolved' && (
+            <MoviesList
+              movies={movies}
+              path={genereatePath}
+            />
+          )}
+        </MoviesWrap>
+        <Stack spacing={2} alignItems="center">
+          <Pagination
+            count={totalPages}
+            shape="rounded"
+            showFirstButton
+            showLastButton
+            page={+page}
+            size={size}
+            color="opacity"
+            onChange={handlePagination}
+          />
+        </Stack>
         {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
         <ScrollToTopFab />
       </Section>
-      
     </>
   );
 };

@@ -6,6 +6,9 @@ import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
 import ScrollToTopFab from 'components/ScrollTopBtn';
 import { Section } from 'styles/Common.styled';
+import { Stack, Pagination } from '@mui/material';
+import {useMediaQuery} from '@mui/material';
+import { theme } from 'styles/Theme';
 import MoviesList from 'components/MoviesList';
 
 const Movies = () => {
@@ -16,6 +19,7 @@ const Movies = () => {
   const [totalPages, setTotalPages] = useState(1);
   const query = searchParams.get('query') ?? '';
   const page = searchParams.get('page') ?? 1;
+  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
 
 
   const handleSearch = searchQuery => {
@@ -64,7 +68,26 @@ const Movies = () => {
     <Section>
       <SearchBar onSubmit={handleSearch} />
       {status === 'pending' && <Loader />}
-      {status === 'resolved' && <MoviesList movies={movies} page={page} totalPages={totalPages} onChange={handlePagination} path = {genereatePath} />}
+      {status === 'resolved' && (
+        <>
+          <MoviesList
+            movies={movies}
+            path={genereatePath}
+          />
+          <Stack spacing={2} alignItems="center">
+            <Pagination
+              count={totalPages}
+              shape="rounded"
+              showFirstButton
+              showLastButton
+              page={+page}
+              size={size}
+              color="opacity"
+              onChange={handlePagination}
+            />
+          </Stack>
+        </>
+      )}
       {status === 'rejected' && <h1>{error.message}</h1>}
       <ScrollToTopFab />
     </Section>
