@@ -8,6 +8,7 @@ import { BASE_IMG_URL } from 'service/movieAPI';
 function MovieCard({ id, poster_path, title, path }) {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
+  console.log('before ', isLoading);
 
   return (
     <MovieItem
@@ -15,24 +16,22 @@ function MovieCard({ id, poster_path, title, path }) {
       to={path(id)}
       state={{ from: location }}
       key={id}
-      sx={{ padding: '0' }}
+      sx={{ padding: '0', '&.MuiListItemButton-root': { display: 'block' } }}
     >
-      <SkeletonLoader
-        variant="rectangular"
-        sx={{
-          ...(!isLoading && {
-            display: 'none',
-          }),
-        }}
-        animation='wave'
-      />
+      {isLoading && <SkeletonLoader variant="rectangular" animation="wave" />}
 
       <ImageListItem
         sx={{
           width: '100%',
           position: 'unset',
           ...(isLoading && {
-            display: 'none',
+            position: 'absolute',
+            width: '0px',
+            height: '0px',
+            margin: ' -1px',
+            border: 0,
+            padding: 0,
+            overflow: 'hidden',
           }),
         }}
       >
@@ -44,13 +43,15 @@ function MovieCard({ id, poster_path, title, path }) {
           }`}
           alt={title}
           loading="lazy"
-          onLoad={() => setIsLoading(false)}
+          onLoad={() => {
+            setIsLoading(false);
+          }}
         />
         <ImageListItemBar
           title={title}
           sx={{
             textAlign: 'center',
-            background: 'rgba(0, 0, 0, 0.7)',
+            background: 'rgba(0, 0, 0, 0.7)'
           }}
         />
       </ImageListItem>
