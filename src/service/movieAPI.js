@@ -83,3 +83,16 @@ export async function getVideo(id) {
         console.log(error)
     }
 }
+
+export async function getImages(id) {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${id}/images`, {
+            params: {
+                api_key: `${API_KEY}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

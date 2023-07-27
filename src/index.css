@@ -23,8 +23,37 @@ p {
   margin: 0;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+div .swiper-button-next,
+div.swiper-button-prev {
+  color: white;
+  background-color: rgba(7, 7, 7, 0.681);
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+div .swiper-button-next::after,
+div.swiper-button-prev::after {
+  font-size: 15px;
+}
+
+@media (min-width: 780px) {
+  div .swiper-button-next,
+  div.swiper-button-prev {
+    color: white;
+    background-color: rgba(7, 7, 7, 0.681);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+  }
+  div .swiper-button-next::after,
+  div.swiper-button-prev::after {
+    font-size: 20px;
+  }
 }

@@ -1,10 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BtnList, BtnWrap, Info } from 'styles/Additional.styled';
+import { BtnList, BtnWrap, Info, AdditionalWrap } from 'styles/Additional.styled';
 
 const Additional = props => {
   const location = useLocation();
   return (
-    <>
+    <AdditionalWrap>
       <h2>Additional info</h2>
       <BtnWrap>
         <BtnList>
@@ -44,7 +44,7 @@ const Additional = props => {
           </Info>
         )}
       </BtnWrap>
-    </>
+    </AdditionalWrap>
   );
 };
 

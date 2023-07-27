@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import styled from 'styled-components';
+import { breakpoints } from './Theme';
 
 export const BtnList = styled.ul`
   list-style: none;
@@ -9,6 +10,20 @@ export const BtnList = styled.ul`
   gap: 10px;
   height: fit-content;
 `;
+
+export const AdditionalWrap = styled.div`
+  @media ${breakpoints.tablet} {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 48%;
+  }
+  @media ${breakpoints.desktop}{
+    position: static;
+    width: unset;
+  }
+`;
+
 
 export const Info = styled(Button)`
   text-decoration: none;
