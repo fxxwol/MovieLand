@@ -1,20 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getTrending } from '../service/movieAPI';
-import { Link, useLocation } from 'react-router-dom';
-import { theme } from 'styles/Theme';
 import ScrollToTopFab from 'components/ScrollTopBtn';
-import {
-  ImageListItem,
-  ImageListItemBar,
-  Pagination,
-  Stack,
-  useMediaQuery,
-} from '@mui/material';
-import { H1, ImageItem, MovieItem } from 'styles/Home.styled';
-import { Wrap } from 'styles/Movies.styled';
-import { BASE_IMG_URL } from '../service/movieAPI';
-import { Loader } from 'components/Loader';
+import MoviesList from 'components/MoviesList';
+import { H1 } from 'styles/Home.styled';
 import { Section } from 'styles/Common.styled';
 import { useSearchParams } from 'react-router-dom';
 import HomeHero from 'components/HomeHero';
@@ -24,9 +13,7 @@ const Home = props => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('');
   const [totalPages, setTotalPages] = useState(1);
-  const location = useLocation();
   const page = searchParams.get('page') ?? 1;
-  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
 
   useEffect(() => {
     async function getTrendingMovies() {
@@ -47,6 +34,9 @@ const Home = props => {
   const handlePagination = (_, page) => {
     setSearchParams({ page });
   };
+
+  const genereatePath = id => `movies/${id}`;
+
   return (
     <>
       <HomeHero></HomeHero>
@@ -54,54 +44,12 @@ const Home = props => {
         <H1 variant="h1">Trending today</H1>
         {/* {status === 'pending' && <Loader />} */}
         {status === 'resolved' && (
-          <>
-            <Wrap>
-              {movies.map(({ id, title, poster_path }) => (
-                <MovieItem
-                  component={Link}
-                  to={`movies/${id}`}
-                  state={{ from: location }}
-                  key={id}
-                  sx={{ padding: '0' }}
-                >
-                  <ImageListItem sx={{ width: '100%' }}>
-                    <ImageItem
-                      src={`${
-                        poster_path
-                          ? BASE_IMG_URL + poster_path
-                          : require('../img/default-poster.jpg')
-                      }`}
-                      alt={title}
-                      loading="lazy"
-                    />
-                    <ImageListItemBar
-                      title={title}
-                      sx={{
-                        textAlign: 'center',
-                        background: 'rgba(0, 0, 0, 0.7)',
-                      }}
-                    />
-                  </ImageListItem>
-                </MovieItem>
-              ))}
-            </Wrap>
-            <Stack spacing={2} alignItems="center">
-              <Pagination
-                count={totalPages}
-                shape="rounded"
-                showFirstButton
-                showLastButton
-                page={+page}
-                size={size}
-                color="opacity"
-                onChange={handlePagination}
-              />
-            </Stack>
-          </>
+          <MoviesList movies={movies} page={page} totalPages={totalPages} onChange={handlePagination} path={ genereatePath} />
         )}
         {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
         <ScrollToTopFab />
       </Section>
+      
     </>
   );
 };

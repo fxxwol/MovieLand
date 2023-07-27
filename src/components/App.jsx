@@ -3,9 +3,10 @@ import Layout from './Layout';
 import { lazy } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import { theme } from '../styles/Theme';
 import Footer from './Footer';
+import { ContainerWrap } from 'styles/Common.styled';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
@@ -16,7 +17,7 @@ const Reviews = lazy(() => import('../components/Reviews'));
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl">
+      <ContainerWrap maxWidth="xl">
         <div className="App">
           <Routes>
             <Route path="/" element={<Layout />}>
@@ -33,7 +34,7 @@ export const App = () => {
         </div>
 
         <ToastContainer autoClose={3000} theme="colored" />
-      </Container>
+      </ContainerWrap>
     </ThemeProvider>
   );
 };

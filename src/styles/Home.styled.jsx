@@ -1,4 +1,4 @@
-import { ListItemButton } from '@mui/material';
+import { ListItemButton, Skeleton } from '@mui/material';
 import styled from 'styled-components';
 import { breakpoints } from './Theme';
 
@@ -22,8 +22,8 @@ export const H1 = styled.h1`
 `;
 
 export const MovieItem = styled(ListItemButton)`
- width: calc((100% - 8px));
- max-width: 264px;
+  width: calc((100% - 8px));
+  max-width: 264px;
 
   &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
     flex-grow: unset;
@@ -48,8 +48,37 @@ export const MovieItem = styled(ListItemButton)`
 
 export const ImageItem = styled.img`
   width: 100%;
+  height: 400px;
   display: block;
   object-fit: cover;
   flex-shrink: 0;
+
+  @media ${mobileL} {
+    height: 220px;
+  }
+
+  @media ${tablet} {
+    height: 280px;
+  }
+  @media ${desktop} {
+    height: 300px;
+  }
 `;
 
+export const SkeletonLoader = styled(Skeleton)`
+  &.MuiSkeleton-root {
+    width: 100%;
+    height: 400px;
+
+    @media ${mobileL} {
+      height: 220px;
+    }
+
+    @media ${tablet} {
+      height: 280px;
+    }
+    @media ${desktop} {
+      height: 300px;
+    }
+  }
+`;

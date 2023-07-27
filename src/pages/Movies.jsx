@@ -1,22 +1,12 @@
 import { useEffect, useState } from 'react';
 import SearchBar from 'components/SearchBar';
 import { searchByName } from 'service/movieAPI';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
-import { Wrap } from 'styles/Movies.styled';
-import { BASE_IMG_URL } from 'service/movieAPI';
-import { ImageItem, MovieItem } from 'styles/Home.styled';
-import { useMediaQuery } from '@mui/material';
 import ScrollToTopFab from 'components/ScrollTopBtn';
-import { theme } from 'styles/Theme';
-import {
-  ImageListItemBar,
-  ImageListItem,
-  Stack,
-  Pagination,
-} from '@mui/material';
 import { Section } from 'styles/Common.styled';
+import MoviesList from 'components/MoviesList';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -26,8 +16,7 @@ const Movies = () => {
   const [totalPages, setTotalPages] = useState(1);
   const query = searchParams.get('query') ?? '';
   const page = searchParams.get('page') ?? 1;
-  const location = useLocation();
-  const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
+
 
   const handleSearch = searchQuery => {
     if (!searchQuery.trim()) {
@@ -69,61 +58,13 @@ const Movies = () => {
     setSearchParams({ query, page });
   };
 
+  const genereatePath = (id) => `${id}`
+
   return (
     <Section>
       <SearchBar onSubmit={handleSearch} />
       {status === 'pending' && <Loader />}
-      {status === 'resolved' && (
-        <>
-          <Wrap>
-            {movies.map(({ id, title, poster_path }) => (
-              <MovieItem
-                component={Link}
-                to={`${id}`}
-                state={{ from: location }}
-                key={id}
-                sx={{ padding: '0' }}
-              >
-                <ImageListItem
-                  sx={{
-                    width: '100%',
-                    position: 'unset',
-                  }}
-                >
-                  <ImageItem
-                    src={`${
-                      poster_path
-                        ? BASE_IMG_URL + poster_path
-                        : require('../img/default-poster.jpg')
-                    }`}
-                    alt={title}
-                    loading="lazy"
-                  />
-                  <ImageListItemBar
-                    title={title}
-                    sx={{
-                      textAlign: 'center',
-                      background: 'rgba(0, 0, 0, 0.7)',
-                    }}
-                  />
-                </ImageListItem>
-              </MovieItem>
-            ))}
-          </Wrap>
-          <Stack spacing={2} alignItems="center">
-            <Pagination
-              count={totalPages}
-              shape="rounded"
-              showFirstButton
-              showLastButton
-              page={+page}
-              size={size}
-              color="opacity"
-              onChange={handlePagination}
-            />
-          </Stack>
-        </>
-      )}
+      {status === 'resolved' && <MoviesList movies={movies} page={page} totalPages={totalPages} onChange={handlePagination} path = {genereatePath} />}
       {status === 'rejected' && <h1>{error.message}</h1>}
       <ScrollToTopFab />
     </Section>

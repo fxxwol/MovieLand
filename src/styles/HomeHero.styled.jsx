@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import img from '../img/hero-img.jpg';
 import { Button } from '@mui/material';
 import { breakpoints } from './Theme';
+import img from '../img/hero.jpg';
 
 const { _, mobileL, tablet, desktop } = breakpoints;
 
 export const HomeWrap = styled.section`
-  background-color: #090909;
+  background-image: url('${img}');
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -23,10 +23,9 @@ export const HomeWrap = styled.section`
   }
   @media ${tablet} {
     height: 500px;
-    width: 690px;
   }
   @media ${desktop} {
-    width: 1152px;
+    height: 600px;
   }
 `;
 
@@ -52,7 +51,6 @@ export const HeroText = styled.p`
     text-align: start;
     margin: 20px auto 0 auto;
   }
-
 `;
 
 export const Btn = styled(Button)`
@@ -72,13 +70,12 @@ export const Btn = styled(Button)`
 `;
 
 export const HeroWrap = styled.div`
-
   @media ${tablet} {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
   }
   @media ${desktop} {
     margin-left: 130px;
