@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import { Pagination, Stack, useMediaQuery } from '@mui/material';
+import { Loader } from 'components/Loader';
+import MoviesList from 'components/MoviesList';
+import ScrollToTopFab from 'components/ScrollTopBtn';
 import SearchBar from 'components/SearchBar';
-import { searchByName } from 'service/movieAPI';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Loader } from 'components/Loader';
-import ScrollToTopFab from 'components/ScrollTopBtn';
+import { searchByName } from 'service/movieAPI';
 import { Section } from 'styles/Common.styled';
-import { Stack, Pagination } from '@mui/material';
-import {useMediaQuery} from '@mui/material';
 import { theme } from 'styles/Theme';
-import MoviesList from 'components/MoviesList';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams({});

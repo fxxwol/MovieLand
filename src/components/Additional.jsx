@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BtnList, BtnWrap, Info, AdditionalWrap } from 'styles/Additional.styled';
+import { AdditionalWrap, BtnList, BtnWrap, Info } from 'styles/Additional.styled';
 
 const Additional = props => {
   const location = useLocation();

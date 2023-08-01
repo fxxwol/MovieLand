@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import { MovieItem, SkeletonLoader } from 'styles/Home.styled';
-import { Link, useLocation } from 'react-router-dom';
-import { ImageItem } from 'styles/Home.styled';
 import { ImageListItem, ImageListItemBar } from '@mui/material';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { BASE_IMG_URL } from 'service/movieAPI';
+import { ImageItem, MovieItem, SkeletonLoader } from 'styles/MovieCard.styled';
 
 function MovieCard({ id, poster_path, title, path }) {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
-  console.log('before ', isLoading);
 
   return (
     <MovieItem

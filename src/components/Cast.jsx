@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCredits, BASE_IMG_URL } from 'service/movieAPI';
-import { CastWrap, CastItem, CastText, CastDetails, Img } from 'styles/Cast.styled';
+import { BASE_IMG_URL, getCredits } from 'service/movieAPI';
+import { CastDetails, CastItem, CastText, CastWrap, Img } from 'styles/Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);

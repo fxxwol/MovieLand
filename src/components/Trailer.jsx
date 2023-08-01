@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getVideo } from 'service/movieAPI';
 import { useParams } from 'react-router-dom';
+import { getVideo } from 'service/movieAPI';
 import { Player, VideoImg } from 'styles/Trailer.styled';
 
 function Trailer() {

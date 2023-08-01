@@ -1,28 +1,17 @@
-import { Loader } from 'components/Loader';
-import { useEffect, useState, useRef, Suspense } from 'react';
-import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import Additional from 'components/Additional';
-import { BASE_IMG_URL, getMovieDetails } from 'service/movieAPI';
+import DetailsPart from 'components/DetailsPart';
+import { Loader } from 'components/Loader';
 import Trailer from 'components/Trailer';
+import React from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { getMovieDetails } from 'service/movieAPI';
+import { Info } from 'styles/Additional.styled';
 import { Section } from 'styles/Common.styled';
 import {
-  DetailItem,
-  DetailsModal,
-  DetailsText,
   Div,
-  OverviewText,
-  P,
-  Table,
-  Tr,
+  MovieTtitle
 } from 'styles/MovieDetails.styled';
-import {
-  Details,
-  Genres,
-  MovieImg,
-  MovieTtitle,
-} from 'styles/MovieDetails.styled';
-import { Info } from 'styles/Additional.styled';
-import ImageSlider from 'components/ImageSlider';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -64,8 +53,6 @@ const MovieDetails = () => {
     setStatus('pending');
   }, [movieId]);
 
-  const releaseYear = new Date(movie.release_date).getFullYear();
-
   if (status === 'pending') {
     return <Loader />;
   }
@@ -82,52 +69,10 @@ const MovieDetails = () => {
           Go Back
         </Info>
         <MovieTtitle>{movie.title}</MovieTtitle>
-        <Div>
-          <Details>
-            <div>
-              <MovieImg
-                src={BASE_IMG_URL + movie.poster_path}
-                alt={movie.title}
-              />
-            </div>
-            <DetailsModal>
-              <DetailsText>
-                <DetailItem>
-                  <P className="title">Release Year: </P>
-                  <P>{releaseYear}</P>
-                </DetailItem>
-                <DetailItem>
-                  <P className="title">Duration: </P>
-                  <P>{movie.runtime}</P>
-                </DetailItem>
-                <DetailItem>
-                  <P className="title">Vote/Votes: </P>
-                  <P>
-                    {movie.vote_average}/{movie.vote_count}
-                  </P>
-                </DetailItem>
-                <DetailItem>
-                  <P className="title">Genres: </P>
-                  
-                    {movie.genres.length !== 0 && (
-                      <Genres>
-                        {movie.genres.map(({ id, name }) => {
-                          return <p key={id}>{name}</p>;
-                        })}
-                      </Genres>
-                    )}
-                  
-                </DetailItem>
-              </DetailsText>
-             <div>
-                <P className="title">About</P>
-                <OverviewText>{movie.overview}</OverviewText>
-             </div>
-              <ImageSlider />
-            </DetailsModal>
-          </Details>
-          <Additional />
-        </Div>
+         <Div>
+            <DetailsPart movie={movie} />
+            <Additional />
+         </Div>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
@@ -136,7 +81,7 @@ const MovieDetails = () => {
     );
   }
   if (status === 'rejected') {
-    return <h1>Sorry, we don't have this movie</h1>;
+    return <h1>Sorry, something went wrong :\</h1>;
   }
 };
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { FooterItem, FooterWrap, Rights } from 'styles/Footer.styled';
 
 export default function Footer() {

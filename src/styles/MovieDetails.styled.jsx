@@ -26,6 +26,13 @@ export const Details = styled.div`
 
 export const Div = styled.div`
   position: relative;
+  @media ${tablet}{
+
+    min-height: 550px;
+  }
+  @media ${desktop} {
+    height: unset;
+  }
 `;
 
 
@@ -115,9 +122,11 @@ export const MovieImg = styled.img`
   @media ${tablet} {
     width: 300px;
     max-width: unset;
+    position: relative;
   }
 
   @media ${desktop} {
+    position: static;
     width: 400px;
   }
 `;

@@ -6,7 +6,7 @@ import img from '../img/hero.jpg';
 const { _, mobileL, tablet, desktop } = breakpoints;
 
 export const HomeWrap = styled.section`
-  background-image: url('${img}');
+  background-image: linear-gradient(#0b0b0b68, #0b0b0b74), url('${img}');
   height: 100%;
   width: 100%;
   border-radius: 10px;

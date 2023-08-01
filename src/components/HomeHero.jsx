@@ -1,13 +1,13 @@
+import { Link } from 'react-router-dom';
 import {
-  HomeWrap,
-  HeroTitle,
-  HeroText,
-  HeroWrap,
-  TextWrap,
   Btn,
   HeroImg,
+  HeroText,
+  HeroTitle,
+  HeroWrap,
+  HomeWrap,
+  TextWrap,
 } from 'styles/HomeHero.styled';
-import { Link } from 'react-router-dom';
 function HomeHero() {
   return (
     <HomeWrap>

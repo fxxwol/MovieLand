@@ -1,15 +1,13 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getTrending } from '../service/movieAPI';
 import ScrollToTopFab from 'components/ScrollTopBtn';
 import MoviesList from 'components/MoviesList';
+import HomeHero from 'components/HomeHero';
+import { Stack, Pagination, useMediaQuery } from '@mui/material';
 import { H1 } from 'styles/Home.styled';
 import { Section } from 'styles/Common.styled';
-import { useSearchParams } from 'react-router-dom';
-import HomeHero from 'components/HomeHero';
 import { MoviesWrap } from 'styles/Movies.styled';
-import { Stack, Pagination } from '@mui/material';
-import {useMediaQuery} from '@mui/material';
 import { theme } from 'styles/Theme';
 
 const Home = props => {
@@ -19,7 +17,7 @@ const Home = props => {
   const [totalPages, setTotalPages] = useState(1);
   const page = searchParams.get('page') ?? 1;
   const size = useMediaQuery(theme.breakpoints.down('lg')) ? 'small' : 'large';
-  
+
   useEffect(() => {
     async function getTrendingMovies() {
       try {
@@ -44,15 +42,12 @@ const Home = props => {
 
   return (
     <>
-      <HomeHero></HomeHero>
+      <HomeHero />
       <Section>
         <H1 variant="h1">Trending today</H1>
         <MoviesWrap>
           {status === 'resolved' && (
-            <MoviesList
-              movies={movies}
-              path={genereatePath}
-            />
+            <MoviesList movies={movies} path={genereatePath} />
           )}
         </MoviesWrap>
         <Stack spacing={2} alignItems="center">
@@ -67,7 +62,7 @@ const Home = props => {
             onChange={handlePagination}
           />
         </Stack>
-        {status === 'rejected' && <h1>Sorry, we don't have trending movies</h1>}
+        {status === 'rejected' && <h1>Sorry,something went wrong :\</h1>}
         <ScrollToTopFab />
       </Section>
     </>

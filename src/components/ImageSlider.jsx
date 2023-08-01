@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getImages } from 'service/movieAPI';
-import { BASE_IMG_URL } from 'service/movieAPI';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Keyboard } from 'swiper/modules';
+import { BASE_IMG_URL, getImages } from 'service/movieAPI';
+import { SliderImage, SliderSkeleton, SwiperWrap } from 'styles/ImageSlider.styled';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/keyboard';
-import { SliderImage, SwiperWrap } from 'styles/ImageSlider.styled';
+import 'swiper/css/navigation';
+import { Keyboard, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 function ImageSlider() {
   const [images, setImages] = useState([]);
-  const [status, setStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -19,14 +18,14 @@ function ImageSlider() {
       try {
         const data = await getImages(movieId);
         setImages(data.backdrops);
-        setStatus('resolved');
+        
       } catch (e) {
         console.log(e);
-        setStatus('rejected');
+        
       }
     }
     getMovieImages();
-    setStatus('pending');
+  
   }, [movieId]);
   return (
     <SwiperWrap>
@@ -58,7 +57,20 @@ function ImageSlider() {
         {images.map(({ file_path }) => {
           return (
             <SwiperSlide key={file_path}>
-              <SliderImage src={BASE_IMG_URL + file_path} alt="slide" />
+              {isLoading && (
+                <SliderSkeleton
+                  variant="rectangular"
+                />
+              )}
+              <SliderImage
+                src={BASE_IMG_URL + file_path}
+                alt="slide"
+                loading="lazy"
+                onLoad={() => {
+                  setIsLoading(false);
+                }}
+                isLoading= {isLoading}
+              />
             </SwiperSlide>
           );
         })}

@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './Layout';
+import { ThemeProvider } from '@mui/material';
 import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ThemeProvider } from '@mui/material';
+import { ContainerWrap } from 'styles/Common.styled';
 import { theme } from '../styles/Theme';
 import Footer from './Footer';
-import { ContainerWrap } from 'styles/Common.styled';
+import Layout from './Layout';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));

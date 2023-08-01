@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Wrap } from 'styles/Movies.styled';
 import MovieCard from './MovieCard';
 

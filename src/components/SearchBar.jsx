@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { Button, FormControl } from '@mui/material';
 import PropTypes from 'prop-types';
-import { FormControl, Button } from '@mui/material';
+import { useState } from 'react';
 import { SearchInput } from 'styles/SearchBar.styled';
 import { breakpoints } from 'styles/Theme';
 
