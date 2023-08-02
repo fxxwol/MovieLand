@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MovieLand/static/css/main.c890aff1.css",
-    "main.js": "/MovieLand/static/js/main.60a3ee57.js",
+    "main.js": "/MovieLand/static/js/main.cdcb5494.js",
     "static/js/384.f95052de.chunk.js": "/MovieLand/static/js/384.f95052de.chunk.js",
     "static/js/873.8af3c9cf.chunk.js": "/MovieLand/static/js/873.8af3c9cf.chunk.js",
     "static/css/90.6dd814ae.chunk.css": "/MovieLand/static/css/90.6dd814ae.chunk.css",
@@ -75,7 +75,7 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/MovieLand/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/MovieLand/index.html",
     "main.c890aff1.css.map": "/MovieLand/static/css/main.c890aff1.css.map",
-    "main.60a3ee57.js.map": "/MovieLand/static/js/main.60a3ee57.js.map",
+    "main.cdcb5494.js.map": "/MovieLand/static/js/main.cdcb5494.js.map",
     "384.f95052de.chunk.js.map": "/MovieLand/static/js/384.f95052de.chunk.js.map",
     "873.8af3c9cf.chunk.js.map": "/MovieLand/static/js/873.8af3c9cf.chunk.js.map",
     "90.6dd814ae.chunk.css.map": "/MovieLand/static/css/90.6dd814ae.chunk.css.map",
@@ -90,6 +90,6 @@
   },
   "entrypoints": [
     "static/css/main.c890aff1.css",
-    "static/js/main.60a3ee57.js"
+    "static/js/main.cdcb5494.js"
   ]
 }
