@@ -50,18 +50,22 @@ const Home = props => {
             <MoviesList movies={movies} path={genereatePath} />
           )}
         </MoviesWrap>
-        <Stack spacing={2} alignItems="center">
-          <Pagination
-            count={totalPages}
-            shape="rounded"
-            showFirstButton
-            showLastButton
-            page={+page}
-            size={size}
-            color="opacity"
-            onChange={handlePagination}
-          />
-        </Stack>
+        {movies.length ? (
+          <Stack spacing={2} alignItems="center">
+            <Pagination
+              count={totalPages}
+              shape="rounded"
+              showFirstButton
+              showLastButton
+              page={+page}
+              size={size}
+              color="opacity"
+              onChange={handlePagination}
+            />
+          </Stack>
+        ) : (
+          <></>
+        )}
         {status === 'rejected' && <h1>Sorry,something went wrong :\</h1>}
         <ScrollToTopFab />
       </Section>

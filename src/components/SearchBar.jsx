@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { SearchInput } from 'styles/SearchBar.styled';
 import { breakpoints } from 'styles/Theme';
 
-export default function SearchBar({ onSubmit }) {
+export default function SearchBar({ onSubmit, onChange }) {
   const [query, setQuery] = useState('');
   const { _, mobileL, tablet, desktop } = breakpoints;
 
   const handleInput = e => {
     setQuery(e.target.value.toLowerCase());
+    onChange([]);
   };
 
   const handleSubmit = e => {

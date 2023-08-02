@@ -49,7 +49,7 @@ function MovieCard({ id, poster_path, title, path }) {
           title={title}
           sx={{
             textAlign: 'center',
-            background: 'rgba(0, 0, 0, 0.7)'
+            background: 'rgba(0, 0, 0, 0.7)',
           }}
         />
       </ImageListItem>

@@ -7,7 +7,7 @@ export const MovieItem = styled(ListItemButton)`
   width: calc((100% - 8px));
   max-width: 264px;
 
-  &.css-bn1567-MuiButtonBase-root-MuiListItemButton-root {
+  &.MuiListItemButton-root {
     flex-grow: unset;
     -webkit-flex-grow: unset;
     transition: all 250ms ease-in-out 0ms;
