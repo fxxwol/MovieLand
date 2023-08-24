@@ -10,7 +10,7 @@ import { Section } from 'styles/Common.styled';
 import { MoviesWrap } from 'styles/Movies.styled';
 import { theme } from 'styles/Theme';
 
-const Home = props => {
+const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('');

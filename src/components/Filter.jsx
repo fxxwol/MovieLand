@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getGenres } from 'service/movieAPI';
 
-function Filter({ onChange}) {
+function Filter({ onChange }) {
   const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(null);
+
   useEffect(() => {
     const getAllGenres = async () => {
       const data = await getGenres();
@@ -10,11 +12,23 @@ function Filter({ onChange}) {
     };
     getAllGenres();
   }, []);
-    
+
+  const handleGenreChange = value => {
+    setSelectedGenre(value);
+    onChange(value);
+  };
+
   return (
     <>
-      <select onChange={e => onChange(e.target.value)}>
-        <option value="">Genre</option>
+      <select
+        onChange={e => handleGenreChange(e.target.value)}
+        value={selectedGenre || ''}
+      >
+        {selectedGenre === null && (
+          <option value="" disabled hidden>
+            Genre
+          </option>
+        )}
         {genres.map(({ id, name }) => (
           <option value={id} key={id}>
             {name}
