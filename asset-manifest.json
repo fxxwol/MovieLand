@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/MovieLand/static/css/main.c890aff1.css",
-    "main.js": "/MovieLand/static/js/main.eb3d84cd.js",
-    "static/js/384.9df40497.chunk.js": "/MovieLand/static/js/384.9df40497.chunk.js",
-    "static/js/815.98e26740.chunk.js": "/MovieLand/static/js/815.98e26740.chunk.js",
+    "main.js": "/MovieLand/static/js/main.e2b9cd6b.js",
+    "static/js/384.edeb6a3e.chunk.js": "/MovieLand/static/js/384.edeb6a3e.chunk.js",
+    "static/js/815.21c47776.chunk.js": "/MovieLand/static/js/815.21c47776.chunk.js",
     "static/css/90.6dd814ae.chunk.css": "/MovieLand/static/css/90.6dd814ae.chunk.css",
     "static/js/90.e0541b10.chunk.js": "/MovieLand/static/js/90.e0541b10.chunk.js",
     "static/js/166.9a347534.chunk.js": "/MovieLand/static/js/166.9a347534.chunk.js",
@@ -75,9 +75,9 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/MovieLand/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/MovieLand/index.html",
     "main.c890aff1.css.map": "/MovieLand/static/css/main.c890aff1.css.map",
-    "main.eb3d84cd.js.map": "/MovieLand/static/js/main.eb3d84cd.js.map",
-    "384.9df40497.chunk.js.map": "/MovieLand/static/js/384.9df40497.chunk.js.map",
-    "815.98e26740.chunk.js.map": "/MovieLand/static/js/815.98e26740.chunk.js.map",
+    "main.e2b9cd6b.js.map": "/MovieLand/static/js/main.e2b9cd6b.js.map",
+    "384.edeb6a3e.chunk.js.map": "/MovieLand/static/js/384.edeb6a3e.chunk.js.map",
+    "815.21c47776.chunk.js.map": "/MovieLand/static/js/815.21c47776.chunk.js.map",
     "90.6dd814ae.chunk.css.map": "/MovieLand/static/css/90.6dd814ae.chunk.css.map",
     "90.e0541b10.chunk.js.map": "/MovieLand/static/js/90.e0541b10.chunk.js.map",
     "166.9a347534.chunk.js.map": "/MovieLand/static/js/166.9a347534.chunk.js.map",
@@ -90,6 +90,6 @@
   },
   "entrypoints": [
     "static/css/main.c890aff1.css",
-    "static/js/main.eb3d84cd.js"
+    "static/js/main.e2b9cd6b.js"
   ]
 }
