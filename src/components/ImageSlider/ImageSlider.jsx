@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { SliderImage, SliderSkeleton, SwiperWrap } from 'components/ImageSlider/ImageSlider.styled';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_IMG_URL, getImages } from 'service/movieAPI';
-import { SliderImage, SliderSkeleton, SwiperWrap } from 'styles/ImageSlider.styled';
 import 'swiper/css';
 import 'swiper/css/keyboard';
 import 'swiper/css/navigation';
@@ -18,14 +18,14 @@ function ImageSlider() {
       try {
         const data = await getImages(movieId);
         setImages(data.backdrops);
-        
+
       } catch (e) {
         console.log(e);
-        
+
       }
     }
     getMovieImages();
-  
+
   }, [movieId]);
   return (
     <SwiperWrap>
@@ -69,7 +69,7 @@ function ImageSlider() {
                 onLoad={() => {
                   setIsLoading(false);
                 }}
-                isLoading= {isLoading}
+                isLoading={isLoading}
               />
             </SwiperSlide>
           );

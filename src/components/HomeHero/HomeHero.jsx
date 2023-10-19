@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   Btn,
   HeroImg,
@@ -7,7 +6,8 @@ import {
   HeroWrap,
   HomeWrap,
   TextWrap,
-} from 'styles/HomeHero.styled';
+} from 'components/HomeHero/HomeHero.styled';
+import { Link } from 'react-router-dom';
 function HomeHero() {
   return (
     <HomeWrap>
@@ -24,7 +24,7 @@ function HomeHero() {
             More Movies
           </Btn>
         </TextWrap>
-        <HeroImg src={require('../img/pngwing.com.png')} alt="movie tape" />
+        <HeroImg src={require('../../img/pngwing.com.png')} alt="movie tape" />
       </HeroWrap>
     </HomeWrap>
   );

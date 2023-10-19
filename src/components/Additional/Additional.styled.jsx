@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import styled from 'styled-components';
-import { breakpoints } from './Theme';
+import { breakpoints } from '../../styles/Theme';
 
 export const BtnList = styled.ul`
   list-style: none;

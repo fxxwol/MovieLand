@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints } from './Theme';
+import { breakpoints } from '../../styles/Theme';
 
 const { _, mobileL, tablet, desktop } = breakpoints;
 

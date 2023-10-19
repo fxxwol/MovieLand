@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getTrending } from '../service/movieAPI';
 import ScrollToTopFab from 'components/ScrollTopBtn';
 import MoviesList from 'components/MoviesList';
-import HomeHero from 'components/HomeHero';
+import HomeHero from 'components/HomeHero/HomeHero';
 import { Stack, Pagination, useMediaQuery } from '@mui/material';
 import { H1 } from 'styles/Home.styled';
 import { Section } from 'styles/Common.styled';

@@ -1,7 +1,7 @@
 import { Button, FormControl } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { SearchInput } from 'styles/SearchBar.styled';
+import { SearchInput } from 'components/SearchBar/SearchBar.styled';
 import { breakpoints } from 'styles/Theme';
 
 export default function SearchBar({ onSubmit }) {

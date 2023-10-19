@@ -2,7 +2,7 @@ import { Pagination, Stack, useMediaQuery } from '@mui/material';
 import { Loader } from 'components/Loader';
 import MoviesList from 'components/MoviesList';
 import ScrollToTopFab from 'components/ScrollTopBtn';
-import SearchBar from 'components/SearchBar';
+import SearchBar from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';

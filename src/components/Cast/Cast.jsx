@@ -1,7 +1,7 @@
+import { CastDetails, CastItem, CastText, CastWrap, Img } from 'components/Cast/Cast.styled';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_IMG_URL, getCredits } from 'service/movieAPI';
-import { CastDetails, CastItem, CastText, CastWrap, Img } from 'styles/Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const Cast = () => {
         }
         setCast(data.cast);
       } catch (error) {
-          setError(error)
+        setError(error)
       }
     }
     getCast();
@@ -34,7 +34,7 @@ const Cast = () => {
               />
             ) : (
               <Img
-                src={require('../img/unknown.png')}
+                src={require('../../img/unknown.png')}
                 alt={person.name}
               />
             )}

@@ -1,5 +1,4 @@
-import React from 'react';
-import { FooterItem, FooterWrap, Rights } from 'styles/Footer.styled';
+import { FooterItem, FooterWrap, Rights } from 'components/Footer/Footer.styled';
 
 export default function Footer() {
   return (
@@ -13,7 +12,7 @@ export default function Footer() {
         </p>
         <a href="https://github.com/fxxwol" target="blank">
           <img
-            src={require('../img/GITHUB-LOGO.png')}
+            src={require('../../img/GITHUB-LOGO.png')}
             alt="GitHub"
             width={60}
           />

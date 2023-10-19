@@ -2,7 +2,7 @@ import { ImageListItem, ImageListItemBar } from '@mui/material';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BASE_IMG_URL } from 'service/movieAPI';
-import { ImageItem, MovieItem, SkeletonLoader } from 'styles/MovieCard.styled';
+import { ImageItem, MovieItem, SkeletonLoader } from '../MovieCard/MovieCard.styled';
 
 function MovieCard({ id, poster_path, title, path }) {
   const location = useLocation();
@@ -11,6 +11,7 @@ function MovieCard({ id, poster_path, title, path }) {
   return (
     <MovieItem
       component={Link}
+      to={path(id)}
       state={{ from: location }}
       key={id}
       sx={{ padding: '0', '&.MuiListItemButton-root': { display: 'block' } }}
@@ -36,7 +37,7 @@ function MovieCard({ id, poster_path, title, path }) {
           src={`${
             poster_path
               ? BASE_IMG_URL + poster_path
-              : require('../img/default-poster.jpg')
+              : require('../../img/default-poster.jpg')
           }`}
           alt={title}
           loading="lazy"

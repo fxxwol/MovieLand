@@ -1,17 +1,16 @@
-import Additional from 'components/Additional';
-import DetailsPart from 'components/DetailsPart';
+import Additional from 'components/Additional/Additional';
+import { Info } from 'components/Additional/Additional.styled';
 import { Loader } from 'components/Loader';
-import Trailer from 'components/Trailer';
-import React from 'react';
-import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { getMovieDetails } from 'service/movieAPI';
-import { Info } from 'styles/Additional.styled';
-import { Section } from 'styles/Common.styled';
+import DetailsPart from 'components/MoviesDetails/DetailsPart';
 import {
   Div,
   MovieTtitle
-} from 'styles/MovieDetails.styled';
+} from 'components/MoviesDetails/MovieDetails.styled';
+import Trailer from 'components/Trailer/Trailer';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { getMovieDetails } from 'service/movieAPI';
+import { Section } from 'styles/Common.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -69,10 +68,10 @@ const MovieDetails = () => {
           Go Back
         </Info>
         <MovieTtitle>{movie.title}</MovieTtitle>
-         <Div>
-            <DetailsPart movie={movie} />
-            <Additional />
-         </Div>
+        <Div>
+          <DetailsPart movie={movie} />
+          <Additional />
+        </Div>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>

@@ -1,5 +1,5 @@
+import { AdditionalWrap, BtnList, BtnWrap, Info } from 'components/Additional/Additional.styled';
 import { Link, useLocation } from 'react-router-dom';
-import { AdditionalWrap, BtnList, BtnWrap, Info } from 'styles/Additional.styled';
 
 const Additional = props => {
   const location = useLocation();
@@ -33,16 +33,16 @@ const Additional = props => {
         </BtnList>
         {(location.pathname.includes('cast') ||
           location.pathname.includes('reviews')) && (
-          <Info
-            component={Link}
-            to={``}
-            variant="outlined"
-            color="secondary"
-            className="hide"
-          >
-            Hide
-          </Info>
-        )}
+            <Info
+              component={Link}
+              to={``}
+              variant="outlined"
+              color="secondary"
+              className="hide"
+            >
+              Hide
+            </Info>
+          )}
       </BtnWrap>
     </AdditionalWrap>
   );

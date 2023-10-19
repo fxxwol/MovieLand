@@ -1,7 +1,7 @@
-import styled from 'styled-components';
 import { Button } from '@mui/material';
-import { breakpoints } from './Theme';
-import img from '../img/hero.jpg';
+import styled from 'styled-components';
+import { breakpoints } from '../../styles/Theme';
+import img from '../../img/hero.jpg';
 
 const { _, mobileL, tablet, desktop } = breakpoints;
 

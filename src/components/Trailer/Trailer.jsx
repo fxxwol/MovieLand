@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { Player, VideoImg } from 'components/Trailer/Trailer.styled';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getVideo } from 'service/movieAPI';
-import { Player, VideoImg } from 'styles/Trailer.styled';
 
 function Trailer() {
   const { movieId } = useParams();
@@ -30,7 +30,7 @@ function Trailer() {
   if (status === 'pending') {
     return (
       <VideoImg
-        src={require('../img/Grey-Screen-of-Death.jpg')}
+        src={require('../../img/Grey-Screen-of-Death.jpg')}
         alt="default player"
       />
     );
@@ -51,7 +51,7 @@ function Trailer() {
   if (status === 'rejected') {
     return (
       <VideoImg
-        src={require('../img/video_error.png')}
+        src={require('../../img/video_error.png')}
         alt="error loading"
       />
     );

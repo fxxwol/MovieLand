@@ -1,7 +1,6 @@
-import React from "react";
+import { DetailItem, Details, DetailsModal, DetailsText, Genres, MovieImg, OverviewText, P } from "components/MoviesDetails/MovieDetails.styled";
 import { BASE_IMG_URL } from "service/movieAPI";
-import { DetailItem, Details, DetailsModal, DetailsText, Genres, MovieImg, OverviewText, P } from "styles/MovieDetails.styled";
-import ImageSlider from "./ImageSlider";
+import ImageSlider from "../ImageSlider/ImageSlider";
 
 function DetailsPart({ movie }) {
   const releaseYear = new Date(movie.release_date).getFullYear();
@@ -9,7 +8,7 @@ function DetailsPart({ movie }) {
     <Details>
       <div>
         <MovieImg src={BASE_IMG_URL + movie.poster_path} alt={movie.title} />
-             </div>
+      </div>
       <DetailsModal>
         <DetailsText>
           <DetailItem>
