@@ -4,20 +4,16 @@ import { useState } from 'react';
 import { SearchInput } from 'styles/SearchBar.styled';
 import { breakpoints } from 'styles/Theme';
 
-export default function SearchBar({ onSubmit, onChange, handleFilter, isTyping }) {
+export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
   const { _, mobileL, tablet, desktop } = breakpoints;
 
   const handleInput = e => {
     setQuery(e.target.value.toLowerCase());
-    handleFilter()
-    isTyping(true)
-    onChange([]);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    isTyping(false)
     onSubmit(query);
     setQuery('');
   };

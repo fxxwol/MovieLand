@@ -11,7 +11,6 @@ function MovieCard({ id, poster_path, title, path }) {
   return (
     <MovieItem
       component={Link}
-      to={path(id)}
       state={{ from: location }}
       key={id}
       sx={{ padding: '0', '&.MuiListItemButton-root': { display: 'block' } }}
